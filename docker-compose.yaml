@@ -1,0 +1,33 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - "/usercode/:/code"
+    environment:
+      - "DATABASE_HOST=database"  # Use the service name of the database service
+      - "DATABASE_PORT=3306"
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_PASSWORD=admin123"
+      - "MYSQL_DATABASE=joviancareers"
+    networks:
+      - app-network
+
+  # Define the database service separately, aligned under 'services'
+  # Ensure this definition is at the same level as the 'web' service, under 'services'
+  database:
+    image: mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_PASSWORD=admin123"
+      - "MYSQL_DATABASE=joviancareers"
+    volumes:
+      - "/usercode/db/init.sql:/docker-entrypoint-initdb.d/init.sql"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

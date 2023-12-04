@@ -1,8 +1,8 @@
 
-CREATE DATABASE joviancareers;
+CREATE DATABASE IF NOT EXISTS joviancareers;
 USE joviancareers;
 
-CREATE TABLE jobs (
+CREATE TABLE IF NOT EXISTS jobs (
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(120) NOT NULL,
   location VARCHAR(120) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE jobs (
 );
 
 
-CREATE TABLE applications (
+CREATE TABLE IF NOT EXISTS applications (
   id INT NOT NULL AUTO_INCREMENT,
   job_id INT NOT NULL,
   full_name VARCHAR(250) NOT NULL,

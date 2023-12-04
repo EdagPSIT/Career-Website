@@ -5,7 +5,7 @@ import os
 
 # db_connection_string = os.environ['DB_CONNECTION_STRING']
 
-db_connection_string = "mysql+pymysql://root:EdagPSIT#2024@localhost/joviancareers?charset=utf8mb4"
+db_connection_string = "mysql+pymysql://root:EdagPSIT#2024@localhost:3306/joviancareers?charset=utf8mb4"
 engine = create_engine(db_connection_string)
 
 
